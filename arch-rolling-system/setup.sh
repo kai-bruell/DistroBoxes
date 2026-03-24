@@ -3,6 +3,7 @@ set -e
 
 CHAOTIC_AUR=(
     neovim
+    pastel
 )
 
 PARU=(
