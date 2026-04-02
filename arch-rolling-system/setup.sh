@@ -7,7 +7,7 @@ CHAOTIC_AUR=(
 )
 
 PARU=(
-    # Pakete aus dem AUR (werden kompiliert)
+    python-grip
 )
 
 EXPORT_BINS=(
@@ -23,6 +23,8 @@ EXPORT_BINS=(
     /usr/bin/wl-paste
     # Desktop notifications
     /usr/bin/notify-send
+    # Markdown preview (GitHub-Style)
+    /usr/bin/grip
 )
 
 # Distrobox-pre-hook: wird von distrobox-enter erstellt, fehlt bei NixOS 1.8.0
@@ -52,6 +54,7 @@ pacman -Sy --noconfirm paru
 # Pakete installieren
 [[ ${#CHAOTIC_AUR[@]} -gt 0 ]] && pacman -S --noconfirm "${CHAOTIC_AUR[@]}"
 [[ ${#PARU[@]} -gt 0 ]] && sudo -u "$(getent passwd 1000 | cut -d: -f1)" -H paru -S --noconfirm "${PARU[@]}"
+
 
 # Binaries auf den Host exportieren
 # Desktop (UID 1000): distrobox-export nach ~/.local/bin
